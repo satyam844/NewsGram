@@ -18,17 +18,15 @@ import com.piedpiper.NewsGram.dtos.CreateUserResponseDto;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@PostMapping("/create")
 	public ResponseEntity<CreateUserResponseDto> create(@RequestBody CreateUserDto userDto) {
-		User user  = userService.createUser(userDto);
-		CreateUserResponseDto dto =new CreateUserResponseDto(user.getId(),user.getName(),user.getEmail());
-		return new ResponseEntity<CreateUserResponseDto>(dto,HttpStatus.CREATED);
+		User user = userService.createUser(userDto);
+		CreateUserResponseDto dto = new CreateUserResponseDto(user.getId(), user.getName(), user.getEmail());
+		return new ResponseEntity<CreateUserResponseDto>(dto, HttpStatus.CREATED);
 	}
-	
-	
 
 }

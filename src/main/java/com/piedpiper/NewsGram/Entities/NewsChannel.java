@@ -15,37 +15,30 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 @Entity
-@Table(name="New_Channel")
+@Table(name = "New_Channel")
 @Data
 public class NewsChannel {
 
-	
-		@Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private Long id;
-		
-		@Column(name="channel_name",nullable = false,unique = true)
-		private String channelName;
-		
-		
-		@Column(name="api_end_point",nullable=false)
-		private String apiEndPoint;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-		@Column(name="catogory")
-		private List<String> category;
-		
-		  @OneToMany
-		  (mappedBy = "newsChannel", cascade = CascadeType.ALL, orphanRemoval = true)
-		   private Set<Subscription> subscriptions = new HashSet<>();
+	@Column(name = "channel_name", nullable = false, unique = true)
+	private String channelName;
 
-	    @Column(name="create_date",nullable = false)
-	    private LocalDateTime createDate;
+	@Column(name = "api_end_point", nullable = false)
+	private String apiEndPoint;
 
-	    @Column(name="modified_time",nullable = false)
-	    private LocalDateTime modifiedDate;
+	@Column(name = "catogory")
+	private List<String> category;
 
-		
-		
-	
-	
+	@OneToMany(mappedBy = "newsChannel", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Subscription> subscriptions = new HashSet<>();
+
+	@Column(name = "create_date", nullable = false)
+	private LocalDateTime createDate;
+
+	@Column(name = "modified_time", nullable = false)
+	private LocalDateTime modifiedDate;
+
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler {
 
 	@ExceptionHandler(UserAlreadyExistsException.class)
-	public ResponseEntity<String> handleUserAlreadyExists(UserAlreadyExistsException ex){
-		return new ResponseEntity<>(ex.getMessage(),HttpStatus.CONFLICT);
+	public ResponseEntity<String> handleUserAlreadyExists(UserAlreadyExistsException ex) {
+		return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
 	}
 }

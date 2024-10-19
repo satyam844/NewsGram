@@ -13,23 +13,20 @@ import com.piedpiper.NewsGram.dtos.CreateUserDto;
 
 @Service
 public class UserServiceImpl implements UserService {
-	
+
 	@Autowired
 	private UserRepository userRepository;
 
 	@Override
 	public User createUser(CreateUserDto userDto) {
-		
-		if(userRepository.findByEmail(userDto.email()) != null) {
+
+		if (userRepository.findByEmail(userDto.email()) != null) {
 			throw new UserAlreadyExistsException("User Already Exists !!!");
 		}
-		
-		User user = User.builder()
-				.name(userDto.name())
-				.email(userDto.email().toLowerCase())
-				.createDate(LocalDateTime.now())
-				.modifiedDate(LocalDateTime.now()).build();
-		
+
+		User user = User.builder().name(userDto.name()).email(userDto.email().toLowerCase())
+				.createDate(LocalDateTime.now()).modifiedDate(LocalDateTime.now()).build();
+
 		return userRepository.save(user);
 	}
 
